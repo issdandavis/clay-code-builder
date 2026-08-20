@@ -16,6 +16,11 @@ npm run dev
 
 Then open the local URL printed by Vite.
 
+The development server discovers `../loom/clay_ask.py`, selects the installed `clay` model when
+available, and otherwise uses the best installed local coding/voice carrier. The subprocess is
+headless, limited to 45 seconds by default, and receives only the active project, lesson, file, and
+at most 12,000 characters of active code. See `.env.example` for overrides.
+
 ## What works now
 
 - Browse finished projects and copy one into your workspace.
@@ -25,7 +30,8 @@ Then open the local URL printed by Vite.
 - Follow step-by-step goals and keep progress in `localStorage`.
 - Ask Clay to explain the active file, give one hint, compare versions, or answer common project
   questions.
-- Optionally connect a local Clay-compatible tutor endpoint with `VITE_CLAY_API_URL`.
+- Ask the real local Loom/Clay bridge automatically during `npm run dev`; if Clay or Ollama is
+  unavailable, fall back to the built-in project tutor without losing the learner's question.
 
 ## Teaching model
 

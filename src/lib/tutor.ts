@@ -61,7 +61,7 @@ export async function askClay(
   question: string,
   context: TutorContext,
 ): Promise<string> {
-  const endpoint = import.meta.env.VITE_CLAY_API_URL?.trim();
+  const endpoint = import.meta.env.VITE_CLAY_API_URL?.trim() || (import.meta.env.DEV ? "/api/clay" : "");
   if (!endpoint) return getLocalTutorReply(action, question, context);
 
   try {
@@ -90,4 +90,3 @@ export async function askClay(
     return `${getLocalTutorReply(action, question, context)} (The optional Clay endpoint was unavailable, so I used the built-in project tutor.)`;
   }
 }
-
