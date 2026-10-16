@@ -7,6 +7,11 @@ An original, lightweight coding tutor that teaches the shape of a real project:
 The first release includes three copyable projects, a live HTML/CSS/JavaScript workbench, local
 progress, step checks, and the **Ask Clay** project-aware tutor. It runs without Docker.
 
+The tablet **Clay Compiler Lab** adds syntax/structure checks for Python, JavaScript, C++, Java,
+and the canonical Six-Tongues compiler. Checks run in disposable PC workspaces and never execute
+learner source. See [SYSTEM_MAP.md](SYSTEM_MAP.md) for the exact path and trust boundaries.
+The first installed-device results are in [TABLET_COMPILER_REPORT.md](TABLET_COMPILER_REPORT.md).
+
 ## Run it
 
 ```bash
@@ -55,5 +60,11 @@ The concept-to-browser comparison is recorded in [docs/FIDELITY.md](docs/FIDELIT
 npm test
 npm run build
 ```
+
+## Connected tablet
+
+Build the development launcher with `python -B build_android.py`, install `build/ClayCompiler.apk`,
+then run `ops/connect-tablet.ps1`. The script starts the service through the profile's headless
+launcher and creates the ADB loopback. No server terminal window is opened.
 
 MIT © Issac Davis

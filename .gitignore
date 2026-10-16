@@ -8,4 +8,8 @@ coverage/
 !.env.example
 playwright-report/
 test-results/
+evidence/
+__pycache__/
+server/__pycache__/
+build/
 

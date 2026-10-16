@@ -341,6 +341,54 @@ button:focus-visible, input:focus-visible, .cm-editor:focus-visible {
 .empty-builds h2 { margin: 18px 0 8px; }
 .empty-builds p { margin: 0 0 24px; color: var(--muted); line-height: 1.6; }
 
+/* Compiler lab */
+.compiler-lab {
+  height: calc(100vh - 70px);
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr);
+  overflow: hidden;
+  padding: 24px 28px 28px;
+  background: var(--surface-soft);
+}
+.compiler-intro { display: flex; align-items: center; justify-content: space-between; gap: 28px; margin-bottom: 18px; }
+.compiler-intro h1 { margin: 5px 0 8px; font-size: 30px; letter-spacing: -.035em; }
+.compiler-intro p { max-width: 760px; margin: 0; color: var(--muted); line-height: 1.5; }
+.compiler-kicker { display: inline-flex; align-items: center; gap: 7px; color: var(--success); font-size: 11px; font-weight: 850; letter-spacing: .12em; }
+.compiler-actions { display: flex; gap: 10px; }
+.compiler-actions button:disabled { opacity: .55; cursor: progress; transform: none; }
+.language-tabs { display: flex; gap: 7px; overflow-x: auto; padding: 0 0 12px; }
+.language-tabs button { min-height: 40px; padding: 0 17px; color: var(--muted); font-size: 13px; font-weight: 750; white-space: nowrap; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; cursor: pointer; }
+.language-tabs button.active { color: white; background: var(--ink); border-color: var(--ink); }
+.compiler-grid { min-height: 0; display: grid; grid-template-columns: minmax(520px, 1.35fr) minmax(360px, .65fr); gap: 16px; }
+.compiler-editor-card, .compiler-output-card { min-width: 0; min-height: 0; overflow: hidden; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+.compiler-editor-card { display: grid; grid-template-rows: 48px minmax(0, 1fr) 51px; }
+.compiler-editor-card > header, .compiler-output-card > header { height: 48px; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; border-bottom: 1px solid var(--line); }
+.compiler-editor-card > header span, .compiler-output-card > header span { font-family: "Cascadia Code", Consolas, monospace; font-size: 13px; font-weight: 800; }
+.compiler-editor-card > header small { color: var(--muted); }
+.compiler-editor { min-height: 0; overflow: hidden; background: var(--surface-code); }
+.compiler-editor .cm-editor { height: 100%; font-size: 14px; }
+.symbol-row { display: flex; overflow-x: auto; background: #647f8b; border-top: 1px solid #516d78; }
+.symbol-row button { min-width: 58px; color: white; font-family: "Cascadia Code", Consolas, monospace; background: transparent; border: 0; border-right: 1px solid rgb(255 255 255 / 22%); cursor: pointer; }
+.symbol-row button:first-child { min-width: 78px; }
+.symbol-row button:active { background: rgb(255 255 255 / 18%); }
+.compiler-output-card { display: flex; flex-direction: column; overflow-y: auto; }
+.compiler-output-card > header { flex: 0 0 auto; }
+.compiler-output-card > header button { display: grid; place-items: center; color: var(--muted); background: none; border: 0; cursor: pointer; }
+.compiler-description { padding: 14px 16px; color: var(--muted); font-size: 12px; line-height: 1.5; background: var(--surface-soft); border-bottom: 1px solid var(--line); }
+.compiler-empty { flex: 1; display: grid; align-content: center; justify-items: center; gap: 12px; padding: 28px; color: var(--muted); text-align: center; }
+.compiler-empty p { max-width: 360px; margin: 0; line-height: 1.6; }
+.compiler-pulse { width: 22px; height: 22px; border: 3px solid var(--line); border-top-color: var(--accent); border-radius: 50%; animation: spin .8s linear infinite; }
+.compiler-verdict { display: flex; gap: 11px; margin: 16px; padding: 14px; border: 1px solid; border-radius: 9px; }
+.compiler-verdict.pass { color: var(--success); background: var(--success-wash); border-color: #9bceb1; }
+.compiler-verdict.fail { color: #b8322c; background: #fff1ef; border-color: #ebaaa5; }
+.compiler-verdict strong { display: block; margin-bottom: 4px; }
+.compiler-verdict p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.45; }
+.compiler-diagnostics, .compiler-artifact pre { margin: 0 16px 16px; padding: 14px; overflow: auto; color: #d9e2ec; font: 12px/1.55 "Cascadia Code", Consolas, monospace; white-space: pre-wrap; overflow-wrap: anywhere; background: #20242b; border-radius: 8px; }
+.compiler-artifact { margin: 0 16px 18px; }
+.compiler-artifact summary { padding: 10px 0; color: var(--accent); font-weight: 750; cursor: pointer; }
+.compiler-artifact h3 { margin: 12px 0 6px; font-size: 12px; }
+.compiler-artifact pre { max-height: 220px; margin: 0; }
+
 @media (max-width: 1280px) {
   .workbench { grid-template-columns: 220px minmax(560px, 1fr) 270px; }
   .project-progress { min-width: 400px; }
@@ -361,6 +409,8 @@ button:focus-visible, input:focus-visible, .cm-editor:focus-visible {
   .workbench { height: auto; min-height: calc(100vh - 70px); grid-template-columns: 200px minmax(0, 1fr); }
   .clay-assistant { grid-column: 1 / -1; min-height: 440px; border-top: 1px solid var(--line); border-left: 0; }
   .lesson-workspace { min-height: 830px; }
+  .compiler-lab { height: auto; min-height: calc(100vh - 70px); overflow: visible; }
+  .compiler-grid { min-height: 760px; grid-template-columns: minmax(0, 1.25fr) minmax(300px, .75fr); }
 }
 
 @media (max-width: 760px) {
@@ -393,6 +443,12 @@ button:focus-visible, input:focus-visible, .cm-editor:focus-visible {
   .code-region { grid-template-columns: 108px minmax(0, 1fr); }
   .preview-region { grid-column: 1; border-top: 1px solid var(--line); }
   .clay-assistant { min-height: 500px; padding-bottom: 24px; }
+  .compiler-lab { display: block; padding: 18px 12px 24px; }
+  .compiler-intro { align-items: flex-start; flex-direction: column; }
+  .compiler-actions { width: 100%; }
+  .compiler-actions button { flex: 1; }
+  .compiler-grid { display: grid; grid-template-columns: 1fr; grid-template-rows: 560px minmax(360px, auto); }
+  .compiler-editor-card { grid-template-rows: 44px minmax(0, 1fr) 52px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

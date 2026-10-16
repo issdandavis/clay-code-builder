@@ -8,4 +8,8 @@
   but must not receive secrets or data outside the active project context.
 - New lessons should follow **Watch → Copy → Change → Recall → Build** and provide replayable checks.
 - Keep dependencies light. This project is intentionally Docker-free.
+- Read `SYSTEM_MAP.md` before changing the compiler path. Learner checks are validation-only: do
+  not add source execution, a shell endpoint, LAN binding, or a second Six-Tongues grammar.
+- The tablet service must stay headless and bind to PC loopback; `ops/connect-tablet.ps1` creates
+  the explicit ADB reverse connection.
 

@@ -1,6 +1,6 @@
-import { BookOpen, FolderOpen, Layers3, MonitorCog, Moon, Sun } from "lucide-react";
+import { BookOpen, Braces, FolderOpen, Layers3, MonitorCog, Moon, Sun } from "lucide-react";
 
-export type AppView = "learn" | "projects" | "builds";
+export type AppView = "learn" | "projects" | "builds" | "compiler";
 
 type TopBarProps = {
   view: AppView;
@@ -47,6 +47,9 @@ export function TopBar({
           </button>
           <button className={view === "builds" ? "active" : ""} onClick={() => onViewChange("builds")}>
             <MonitorCog size={19} /> My builds
+          </button>
+          <button className={view === "compiler" ? "active" : ""} onClick={() => onViewChange("compiler")}>
+            <Braces size={19} /> Compiler
           </button>
         </nav>
       )}

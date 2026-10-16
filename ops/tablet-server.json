@@ -1,0 +1,6 @@
+{
+  "executable": "C:\\Program Files\\nodejs\\node.exe",
+  "arguments": "\"C:\\dev\\clay-code-builder\\node_modules\\vite\\bin\\vite.js\" preview --host 127.0.0.1 --port 5174 --strictPort",
+  "working_directory": "C:\\dev\\clay-code-builder",
+  "log": "C:\\dev\\clay-code-builder\\evidence\\tablet-20261016\\server.log"
+}

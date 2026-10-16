@@ -2,6 +2,7 @@ import react from "@vitejs/plugin-react";
 import { loadEnv } from "vite";
 import { defineConfig } from "vitest/config";
 import { clayGatewayPlugin } from "./server/clayGateway.ts";
+import { compilerGatewayPlugin } from "./server/compilerGateway.ts";
 
 export default defineConfig(({ mode }) => {
   const localEnv = loadEnv(mode, process.cwd(), "");
@@ -10,7 +11,7 @@ export default defineConfig(({ mode }) => {
   }
 
   return {
-    plugins: [react(), clayGatewayPlugin()],
+    plugins: [react(), compilerGatewayPlugin(), clayGatewayPlugin()],
     test: {
       environment: "jsdom",
     },

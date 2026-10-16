@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { BuildsView } from "./components/BuildsView";
+import { CompilerLab } from "./components/CompilerLab";
 import { ProjectLibrary } from "./components/ProjectLibrary";
 import { TopBar, type AppView } from "./components/TopBar";
 import { Workbench } from "./components/Workbench";
@@ -9,7 +10,11 @@ import type { ProjectFiles, ProjectTemplate } from "./types";
 
 export default function App() {
   const [saved, setSaved] = useState<SavedState>(() => loadState());
-  const [view, setView] = useState<AppView>(saved.copiedProjects.length ? "learn" : "projects");
+  const [view, setView] = useState<AppView>(() => (
+    window.location.hash === "#compiler"
+      ? "compiler"
+      : saved.copiedProjects.length ? "learn" : "projects"
+  ));
   const [selectedProjectId, setSelectedProjectId] = useState(saved.lastProjectId);
   const [dark, setDark] = useState(false);
   const project = useMemo(() => getProject(selectedProjectId), [selectedProjectId]);
@@ -117,6 +122,8 @@ export default function App() {
           onProjects={() => setView("projects")}
         />
       )}
+
+      {view === "compiler" && <CompilerLab />}
     </div>
   );
 }
